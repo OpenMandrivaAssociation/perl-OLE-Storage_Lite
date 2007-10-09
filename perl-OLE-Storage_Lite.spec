@@ -1,6 +1,6 @@
 %define real_name OLE-Storage_Lite
 
-Summary:	OLE::Storage_Lite - Simple Class for OLE document interface.
+Summary:	OLE::Storage_Lite - Simple Class for OLE document interface
 Name:		perl-%{real_name}
 Version:	0.14
 Release:	%mkrel 3
