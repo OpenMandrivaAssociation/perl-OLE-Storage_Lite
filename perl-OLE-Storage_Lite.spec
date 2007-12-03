@@ -1,23 +1,30 @@
-%define real_name OLE-Storage_Lite
+%define module OLE-Storage_Lite
+%define name	perl-%{module}
+%define version 0.15
+%define release %mkrel 1
 
-Summary:	OLE::Storage_Lite - Simple Class for OLE document interface
-Name:		perl-%{real_name}
-Version:	0.14
-Release:	%mkrel 3
+Name:		%{name}
+Version:	%{version}
+Release:	%{release}
+Summary:	Simple Class for OLE document interface
 License:	GPL or Artistic
 Group:		Development/Perl
-URL:		http://www.cpan.org
-Source0:	%{real_name}-%{version}.tar.bz2
+Url:		http://search.cpan.org/dist/%{module}/
+Source:     http://www.cpan.org/modules/by-module/Net/%{module}-%{version}.tar.gz
 BuildRequires:	perl-devel
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot:	%{_tmppath}/%{name}-%{version}
 
 %description
-OLE::Storage_Lite - Simple Class for OLE document interface.
+OLE::Storage_Lite allows you to read and write an OLE structured file. Please
+refer OLE::Storage by Martin Schwartz.
+
+OLE::Storage_Lite::PPS is a class representing PPS.
+OLE::Storage_Lite::PPS::Root, OLE::Storage_Lite::PPS::File and
+OLE::Storage_Lite::PPS::Dir are subclasses of OLE::Storage_Lite::PPS.
 
 %prep
-
-%setup -q -n %{real_name}-%{version}
+%setup -q -n %{module}-%{version}
 
 # perl path hack
 find . -type f | xargs perl -p -i -e "s|^#\!/usr/local/bin/perl|#\!/usr/bin/perl|g"
@@ -29,12 +36,11 @@ find . -type f | xargs perl -p -i -e "s|^#\!/usr/local/bin/perl|#\!/usr/bin/perl
 %make OPTIMIZE="%{optflags}"
 
 %install
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
-
+rm -rf %{buildroot}
 %makeinstall_std
 
 %clean 
-[ -n "%{buildroot}" -a "%{buildroot}" != / ] && rm -rf %{buildroot}
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
