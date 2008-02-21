@@ -1,6 +1,6 @@
 %define module OLE-Storage_Lite
 %define name	perl-%{module}
-%define version 0.15
+%define version 0.16
 %define release %mkrel 1
 
 Name:		%{name}
@@ -10,8 +10,7 @@ Summary:	Simple Class for OLE document interface
 License:	GPL or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{module}/
-Source:     http://www.cpan.org/modules/by-module/Net/%{module}-%{version}.tar.gz
-BuildRequires:	perl-devel
+Source:     http://www.cpan.org/modules/by-module/OLE/%{module}-%{version}.tar.gz
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}
 
@@ -30,9 +29,7 @@ OLE::Storage_Lite::PPS::Dir are subclasses of OLE::Storage_Lite::PPS.
 find . -type f | xargs perl -p -i -e "s|^#\!/usr/local/bin/perl|#\!/usr/bin/perl|g"
 
 %build
-
 %{__perl} Makefile.PL INSTALLDIRS=vendor 
-
 %make OPTIMIZE="%{optflags}"
 
 %install
