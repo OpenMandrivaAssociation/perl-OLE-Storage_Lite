@@ -1,6 +1,6 @@
 %define module OLE-Storage_Lite
 %define name	perl-%{module}
-%define version 0.16
+%define version 0.17
 %define release %mkrel 1
 
 Name:		%{name}
