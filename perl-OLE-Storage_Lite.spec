@@ -1,18 +1,18 @@
-%define module OLE-Storage_Lite
-%define name	perl-%{module}
-%define version 0.18
-%define release %mkrel 1
+%define upstream_name    OLE-Storage_Lite
+%define upstream_version 0.18
 
-Name:		%{name}
-Version:	%{version}
-Release:	%{release}
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	%mkrel 1
+
 Summary:	Simple Class for OLE document interface
-License:	GPL or Artistic
+License:	GPL+ or Artistic
 Group:		Development/Perl
-Url:		http://search.cpan.org/dist/%{module}/
-Source:     http://www.cpan.org/modules/by-module/OLE/%{module}-%{version}.tar.gz
+Url:		http://search.cpan.org/dist/%{upstream_name}/
+Source0:    http://www.cpan.org/modules/by-module/OLE/%{upstream_name}-%{upstream_version}.tar.gz
+
 BuildArch:	noarch
-BuildRoot:	%{_tmppath}/%{name}-%{version}
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 OLE::Storage_Lite allows you to read and write an OLE structured file. Please
@@ -23,7 +23,7 @@ OLE::Storage_Lite::PPS::Root, OLE::Storage_Lite::PPS::File and
 OLE::Storage_Lite::PPS::Dir are subclasses of OLE::Storage_Lite::PPS.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 # perl path hack
 find . -type f | xargs perl -p -i -e "s|^#\!/usr/local/bin/perl|#\!/usr/bin/perl|g"
@@ -44,5 +44,3 @@ rm -rf %{buildroot}
 %doc Changes README sample
 %{perl_vendorlib}/OLE
 %{_mandir}/*/*
-
-
