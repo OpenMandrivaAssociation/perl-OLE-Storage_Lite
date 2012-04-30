@@ -13,6 +13,7 @@ Source0:    http://www.cpan.org/modules/by-module/OLE/%{upstream_name}-%{upstrea
 
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}
+BuildRequires:	perl-devel
 
 %description
 OLE::Storage_Lite allows you to read and write an OLE structured file. Please
